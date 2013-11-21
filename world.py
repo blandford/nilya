@@ -21,13 +21,46 @@
 # Authors:
 # Eleanor and Jonathan Blandford
 
+# Statuses
+STATUS_ALIVE = 1
+STATUS_DEAD = 2
+STATUS_SAVE = 3
+STATUS_QUIT = 4
+
+# Moving Directions
+DIR_NORTH = 1
+DIR_NORTHEAST = 2
+DIR_EAST = 3
+DIR_SOUTHEAST = 4
+DIR_SOUTH = 5
+DIR_SOUTHWEST = 6
+DIR_WEST = 7
+DIR_NORTHWEST = 8
+DIR_UP = 9
+DIR_DOWN = 10
+
+
 class World:
     def __init__ (self):
-        self.first_room = ''
-        self.rooms = {}
+        self.current_section = ''
+        self.sections = {}
+        self.inventory = []
+        self.status = STATUS_ALIVE
 
-    def load (self, file):
+    def load_sections (self, sections):
         pass
+
+    def set_current_section (self, section):
+        pass
+
+    def keep_playing (self):
+        return (self.status == STATUS_ALIVE)
+
+    def set_game_status (self, status):
+        self.status = status
+
+    def get_game_status (self):
+        return self.status
 
 
 

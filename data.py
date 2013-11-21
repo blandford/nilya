@@ -18,13 +18,17 @@ map_sections = [
      """ """),
 
     ( 'stockton-market',
-      '',
+      'The Stockton Market',
       """ """),
 
     ( 'stockton-general-store',
-      '',
+      'The Stockton Store',
       """ """),
 ]
 
+
+map_connections = [
+
+]
 
 

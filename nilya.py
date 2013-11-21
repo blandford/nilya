@@ -23,27 +23,87 @@
 
 import sys
 import signal
+import world
+import verbs
+import data
+
+world_map = world.World ()
+world_map.load_sections (data.map_sections]
+world_map.set
+verbs = verbs.Verbs ('s')
+
+PROMPT = '> '
+
+def tokenize_command (command):
+    # Take a command and turn it into a list of tokens.  As an
+    # example, it will turn "go south " into ['go', 'south']
+    command = ' '.join (command.split ())
+    return command.split(' ')
 
 
+def read_input (tokenize):
+    # Read in a set of commands from the prompt.  There can be
+    # multiple commands per line separated by ';'.  This is the only
+    # place that will read input for the user.  If tokenize is True,
+    # it will return a list of lowercase tokens that can be parsed
+    # individually.  As an example, it could return: [['take',
+    # 'apple'], ['go', 'down'], ['w']]
+    #
+    # Otherwise, it will return the raw string in a list with one item
 
-def evaluate (reply):
-    print reply
-    return True
+    try:
+        user_input = raw_input(PROMPT)
+        if tokenize:
+            commands = user_input.lower().split(';') or ['']
+            commands = map (tokenize_command, commands)
+        else:
+            commands = [user_input]
+    except (KeyboardInterrupt, EOFError):
+        # Someone hit C-c or C-D.  Treat it like they'd typed 'quit'
+        # as a special case
+        print
+        commands = [ ['quit'] ]
+    
+    return commands
+    
+
+def evaluate_command (command):
+    # Evaluate a command.  This is the only place that will print out
+    # any output to the user.  It expects a set of tokens 
+
+    message = verbs.eval (world_map, command)
+    if message:
+        print message
+
+    status = world_map.get_game_status ()
+
+    if status == world.STATUS_ALIVE:
+        return True
+    if status == world.STATUS_DEAD:
+        return False
+    if status == world.STATUS_SAVE:
+        print 'Saving not implemented yet.  Sorry.'
+        return True
+    if status == world.STATUS_QUIT:
+        print 'Goodbye!'
+        return False
+
+    return False
+
 
 def mainloop ():
-    alive = True
-    
-    while alive:
-        try:
-            replies = raw_input('> ').lower().split(';') or ['']
-        except (KeyboardInterrupt, EOFError):
-            replies = []
-            alive = False
-            
-        for reply in replies:
-            alive = evaluate (reply)
-    print
+    keep_playing = True
+    while keep_playing:
+        commands = read_input (True)
 
+        for command in commands:
+            keep_playing = evaluate_command (command)
+            if not keep_playing:
+                # the game has ended!
+                break
+
+    # Put some white space at the end
+    print
 
 if __name__ == '__main__':
     mainloop ()
