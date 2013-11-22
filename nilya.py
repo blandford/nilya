@@ -24,15 +24,22 @@
 import sys
 import signal
 import world
-import verbs
+from verbs import Verbs
 import data
 
-world_map = world.World ()
-world_map.load_sections (data.map_sections]
-world_map.set
-verbs = verbs.Verbs ('s')
 
 PROMPT = '> '
+
+
+## First, set up the world map
+world_map = world.World ()
+world_map.load_rooms (data.map_rooms)
+world_map.load_connections (data.map_connections)
+world_map.set_current_room ('stockton-home')
+
+## set up the parsing engine
+verbs = Verbs ('s')
+
 
 def tokenize_command (command):
     # Take a command and turn it into a list of tokens.  As an
@@ -93,6 +100,9 @@ def evaluate_command (command):
 
 def mainloop ():
     keep_playing = True
+    print data.initial_text
+    evaluate_command (['look'])
+
     while keep_playing:
         commands = read_input (True)
 

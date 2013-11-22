@@ -44,7 +44,8 @@ Homonyms = {
 Actions = {
     'quit':actions.quit_game,
     'save':actions.save_game,
-    'go': actions.handle_direction,
+    'go': actions.move,
+    'look': actions.look,
 }
 
 

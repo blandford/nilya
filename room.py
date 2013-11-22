@@ -22,6 +22,7 @@
 # Eleanor and Jonathan Blandford
 
 import data
+import misc
 
 class Room:
     def __init__ (self, id, short_name, description, items):
@@ -29,20 +30,34 @@ class Room:
         self.short_name = short_name
         self.description = description
         self.items = items
-        self.neighbors = {}
+        self.connections = {}
         self.visited = False
     
+    def set_connection (self, direction, id):
+        self.connections[direction] = id
+
+    def get_connection (self, direction):
+        try:
+            return self.connections[direction]
+        except KeyError:
+            return None
+
+    def get_description (self, ignore_visited=False):
+        # Returns a string to describe the room.  The first time you
+        # see a room we also include the long description
+        str = misc.bold (self.short_name)
+        if ignore_visited or not self.visited:
+            str += '\n' + self.description
+        return str
+
+
     def display (self):
-        print "\033[1m" + self.short_name + "\033[0;0m"
-        print self.description
+        print self.get_description (False)
+
+    def set_visited (self):
+        self.visited = True
 
 if __name__ == '__main__':
-    rooms = []
-    for (id, short_name, description) in data.map_sections:
-        room = Room (id, short_name, description, [])
-        rooms.append (room)
-    for room in rooms:
-        room.display ()
-        print
+    pass
 
     

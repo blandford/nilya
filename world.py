@@ -21,6 +21,8 @@
 # Authors:
 # Eleanor and Jonathan Blandford
 
+from room import Room
+
 # Statuses
 STATUS_ALIVE = 1
 STATUS_DEAD = 2
@@ -40,18 +42,40 @@ DIR_UP = 9
 DIR_DOWN = 10
 
 
+
 class World:
     def __init__ (self):
-        self.current_section = ''
-        self.sections = {}
+        self.current_room = None
+        self.rooms = {}
         self.inventory = []
         self.status = STATUS_ALIVE
 
-    def load_sections (self, sections):
-        pass
+    def load_rooms (self, rooms):
+        for row in rooms:
+            room = Room (row[0], row[1], row[2], '')
+            self.rooms[room.id] = room
 
-    def set_current_section (self, section):
-        pass
+    def load_connections (self, connections):
+        for connection in connections:
+            # connection is of the form:
+            # (room-id, (direction, target-room-id), ...
+            # FIXME: will do a more robust job later
+            
+            room = self.rooms[connection[0]]
+            for (direction, target_room_id) in connection[1:]:
+                room.set_connection (direction, target_room_id)
+
+    def set_current_room (self, room_id, ignore_visited=False):
+        room = self.rooms[room_id]
+        self.room = room
+        if not ignore_visited:
+            self.room.set_visited ()
+
+    def get_current_room (self):
+        return self.room
+
+    def get_room (self, id):
+        return self.rooms[id]
 
     def keep_playing (self):
         return (self.status == STATUS_ALIVE)

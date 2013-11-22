@@ -1,6 +1,12 @@
 #!/usr/bin/python
 
-map_sections = [
+
+initial_text = """
+Welcome to The Nilya Quest!
+
+You are on a quest to find the nilya, and do amazing things with it.
+"""
+map_rooms = [
     ( 'stockton-home',
       'Home', 
       """A white house with a red roof.  There is a wooden door and some small windows here.  It has a small garden and field and a white fence around it.  It is very pretty.""",),
@@ -28,6 +34,15 @@ map_sections = [
 
 
 map_connections = [
+    ('stockton-home', 
+     ('n', 'stockton-market'),
+     ('w', 'stockton-general-store'),
+     ('s', 'stockton-glorys-house'),
+    ),
+
+    ('stockton-glorys-house', 
+     ('n', 'stockton-home'),
+    ),
 
 ]
 
