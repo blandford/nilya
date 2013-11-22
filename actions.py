@@ -42,10 +42,11 @@ def move (world_map, args):
 
     # first, we have to handle the special 'go' verb
     if args[0] == 'go':
-        args = args[:1]
+        args = args[1:]
 
     # then, we update our position
     direction = args[0]
+    direction = misc.short_direction (direction)
     id = room.get_connection (direction)
     if id:
         new_room = world_map.get_room (id)

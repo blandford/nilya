@@ -21,15 +21,15 @@ map_rooms = [
 
     ('stockton-school',
      'The Stockton School',
-     """Stockton SChool"""),
+     """A small brown schoolhouse"""),
 
     ( 'stockton-market',
       'The Stockton Market',
-      """Stockton Market"""),
+      """Stockton Market.  You buy turnips here."""),
 
     ( 'stockton-general-store',
       'The Stockton Store',
-      """Stockton Store"""),
+      """Stockton Store.  You buy castles here"""),
 ]
 
 
@@ -40,17 +40,27 @@ map_connections = [
      ('s', 'stockton-glorys-house'),
     ),
 
+    ('stockton-jacks-house',
+     ('n', 'stockton-glorys-house'),
+    ),
+
     ('stockton-glorys-house', 
      ('n', 'stockton-home'),
+     ('s', 'stockton-jacks-house')
     ),
 
     ('stockton-market', 
      ('s', 'stockton-home'),
+     ('e', 'stockton-school'),
     ),
+
     ('stockton-general-store', 
      ('e', 'stockton-home'),
     ),
 
+    ('stockton-school',
+     ('w', 'stockton-market'),
+    ),
 ]
 
 

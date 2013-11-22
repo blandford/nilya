@@ -28,3 +28,19 @@ def bold (str):
 def dont_understand (str):
     ##
     return "I don't understand '" + str + "'\n"
+
+def short_direction (direction):
+    direction_mapping = {
+        # directions
+        'north': 'n',
+        'northeast': 'ne',
+        'east': 'e',
+        'southeast': 'se',
+        'south': 's',
+        'southwest': 'sw',
+        'west': 'w',
+        'northwest': 'nw',
+    }
+    if direction_mapping.has_key (direction):
+        return direction_mapping[direction]
+    return direction

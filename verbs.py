@@ -20,25 +20,25 @@
 # Authors:
 # Eleanor and Jonathan Blandford
 
-import json
 import sys
 import actions
+import misc
 
 Homonyms = {
     'get': 'take',
     'grab': 'take',
     
+    'q': 'quit',
     'exit': 'quit',
 
+    'l': 'look',
+
     # directions
-    'north': 'go', 'n': 'go',
-    'northeast': 'go', 'ne': 'go',
-    'east': 'go', 'e': 'go',
-    'southeast': 'g', 'se': 'go',
-    'south': 'go', 's': 'go',
-    'southwest': 'go', 'sw': 'go',
-    'west': 'go', 'w': 'go',
-    'northwest': 'go', 'nw': 'go',
+    'n': 'go', 'ne': 'go',
+    'e': 'go', 'se': 'go',
+    's': 'go', 'sw': 'go',
+    'w': 'go', 'nw': 'go',
+    'up': 'go', 'down': 'go',
 }
 
 Actions = {
@@ -47,8 +47,6 @@ Actions = {
     'go': actions.move,
     'look': actions.look,
 }
-
-
 
 
 class Verbs:
@@ -63,6 +61,8 @@ class Verbs:
         if not action:
             return ''
 
+        action = misc.short_direction (action)
+
         if Homonyms.has_key (action):
             action = Homonyms [action]
 
@@ -74,12 +74,3 @@ class Verbs:
             return func (world_map, commands)
 
         return ''
-
-
-
-# 
-if __name__ == '__main__':
-    verbs = Verbs ('verbs.json')
-
-    print json.dumps (homonyms)
-    sys.exit (0)
