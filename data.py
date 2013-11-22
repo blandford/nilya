@@ -21,15 +21,15 @@ map_rooms = [
 
     ('stockton-school',
      'The Stockton School',
-     """ """),
+     """Stockton SChool"""),
 
     ( 'stockton-market',
       'The Stockton Market',
-      """ """),
+      """Stockton Market"""),
 
     ( 'stockton-general-store',
       'The Stockton Store',
-      """ """),
+      """Stockton Store"""),
 ]
 
 
@@ -42,6 +42,13 @@ map_connections = [
 
     ('stockton-glorys-house', 
      ('n', 'stockton-home'),
+    ),
+
+    ('stockton-market', 
+     ('s', 'stockton-home'),
+    ),
+    ('stockton-general-store', 
+     ('e', 'stockton-home'),
     ),
 
 ]
