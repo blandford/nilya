@@ -46,7 +46,7 @@ class Room:
         # Returns a string to describe the room.  The first time you
         # see a room we also include the long description
         str = misc.bold (self.short_name)
-        if ignore_visited or not self.visited:
+        if True or ignore_visited or not self.visited:
             str += '\n' + self.description
         return str
 

@@ -30,6 +30,16 @@ map_rooms = [
     ( 'stockton-general-store',
       'The Stockton Store',
       """Stockton Store.  You buy castles here"""),
+
+    ( 'stockton-church',
+      'Church',
+      """A brown, wooden church with stained glass windows.  It's very popular."""
+    ), 
+
+    ( 'stockton-dock',
+      'The Docks',
+      """It's a wooden dock with a boathouse.  There are two motorboats and one sailboat here."""
+    ),
 ]
 
 
@@ -38,6 +48,8 @@ map_connections = [
      ('n', 'stockton-market'),
      ('w', 'stockton-general-store'),
      ('s', 'stockton-glorys-house'),
+     ('e', 'stockton-church'),
+     ('ne', 'stockton-school'),
     ),
 
     ('stockton-jacks-house',
@@ -46,20 +58,38 @@ map_connections = [
 
     ('stockton-glorys-house', 
      ('n', 'stockton-home'),
-     ('s', 'stockton-jacks-house')
+     ('s', 'stockton-jacks-house'),
+     ('nw', 'stockton-general-store'),
     ),
 
     ('stockton-market', 
      ('s', 'stockton-home'),
      ('e', 'stockton-school'),
+     ('se', 'stockton-church'),
+     ('sw', 'stockton-general-store'),
     ),
 
     ('stockton-general-store', 
      ('e', 'stockton-home'),
+     ('ne', 'stockton-market'),
+     ('sw', 'stockton-glorys-house'),
     ),
 
     ('stockton-school',
      ('w', 'stockton-market'),
+     ('s', 'stockton-church'),
+     ('sw', 'stockton-home'),
+    ),
+
+    ('stockton-church',
+     ('w', 'stockton-home'),
+     ('n', 'stockton-school'),
+     ('s', 'stockton-dock'),
+     ('nw', 'stockton-market'),
+    ),
+
+    ('stockton-dock',
+     ('n', 'stockton-church')
     ),
 ]
 
