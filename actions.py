@@ -1,7 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 #
-# nilya.py - A text adventure game
+# actions.py - the actual actions that you type in.
+#
 # Copyright © 2013 Jonathan Blandford
 #
 # This program is free software; you can redistribute it and/or modify

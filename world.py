@@ -23,7 +23,8 @@
 
 from room import Room
 
-# Statuses
+# Status
+# Fixme: move to status
 STATUS_ALIVE = 1
 STATUS_DEAD = 2
 STATUS_SAVE = 3

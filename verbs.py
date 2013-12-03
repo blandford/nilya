@@ -1,7 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 #
-# nilya.py - A text adventure game
+# verbs.py - parser for the commands.
+# 
 # Copyright © 2013 Jonathan Blandford
 #
 # This program is free software; you can redistribute it and/or modify
@@ -50,7 +51,7 @@ Actions = {
 
 
 class Verbs:
-    def __init__ (self, filename):
+    def __init__ (self):
         pass
 
     def eval (self, world_map, commands):

@@ -20,13 +20,12 @@
 # Authors:
 # Eleanor and Jonathan Blandford
 
-
 import sys
 import signal
 import world
-from verbs import Verbs
 import data
-
+from verbs import Verbs
+from state import State
 
 PROMPT = '> '
 
@@ -37,8 +36,12 @@ world_map.load_rooms (data.map_rooms)
 world_map.load_connections (data.map_connections)
 world_map.set_current_room ('stockton-home')
 
+## Set up the world state
+state = State ()
+state.set_balance (100)
+
 ## set up the parsing engine
-verbs = Verbs ('s')
+verbs = Verbs ()
 
 
 def tokenize_command (command):
