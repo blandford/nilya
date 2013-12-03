@@ -34,6 +34,8 @@ Homonyms = {
 
     'l': 'look',
 
+    'i': 'inventory',
+
     # directions
     'n': 'go', 'ne': 'go',
     'e': 'go', 'se': 'go',
@@ -47,6 +49,7 @@ Actions = {
     'save':actions.save_game,
     'go': actions.move,
     'look': actions.look,
+    'inventory': actions.inventory,
 }
 
 
@@ -54,7 +57,7 @@ class Verbs:
     def __init__ (self):
         pass
 
-    def eval (self, world_map, commands):
+    def eval (self, commands, state):
         # Finds the appropriate function and executes it.  Returns a
         # message to print.
         action = commands[0]
@@ -72,6 +75,6 @@ class Verbs:
             func = Actions [action]
 
         if func:
-            return func (world_map, commands)
+            return func (commands, state)
 
-        return ''
+        return misc.dont_understand (action)

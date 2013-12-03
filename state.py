@@ -22,24 +22,30 @@
 # Authors:
 # Eleanor and Jonathan Blandford
 
+
+STATUS_ALIVE = 1
+STATUS_DEAD = 2
+STATUS_SAVE = 3
+STATUS_QUIT = 4
+
+
 class State:
     # Class to encapsulate all the game state.  Used to save/load to
     # disk
-    STATUS_ALIVE = 1
-    STATUS_DEAD = 2
-    STATUS_SAVE = 3
-    STATUS_QUIT = 4
 
     def __init__ (self):
+        self.world_map = None
         self.items = []
         self.money = 0
         self.map = None
+        self.status = STATUS_ALIVE
 
-    def set_balance (self, money):
+
+    def set_funds (self, money):
         assert (money > 0)
         self.money = money
 
-    def get_balance (self):
+    def get_funds (self):
         return self.money
 
     def add_funds (self, funds):
@@ -59,3 +65,9 @@ class State:
 
     def get_game_status (self):
         return self.status
+
+    def set_world_map (self, world_map):
+        self.world_map = world_map
+
+    def get_world_map (self):
+        return self.world_map

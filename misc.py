@@ -27,7 +27,7 @@ def bold (str):
 
 def dont_understand (str):
     ##
-    return "I don't understand '" + str + "'\n"
+    return "I don't understand how to '" + str + "'\n"
 
 def short_direction (direction):
     direction_mapping = {

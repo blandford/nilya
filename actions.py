@@ -22,27 +22,35 @@
 # Eleanor and Jonathan Blandford
 
 import world
+import state
 import misc
 
-def quit_game (world_map, args):
-    world_map.set_game_status (world.STATUS_QUIT)
+def quit_game (args, world_state):
+    world_state.set_game_status (state.STATUS_QUIT)
 
-def save_game (world_map, args):
+def save_game (args, world_state):
     # FIXME: implement
     pass
 
-def look (world_map, args):
+def look (args, world_state):
+    world_map = world_state.get_world_map ()
     room = world_map.get_current_room ()
     return room.get_description (True)
 
 
-def move (world_map, args):
+def inventory (args, world_state):
+    pass
+
+def move (args, world_state):
+    world_map = world_state.get_world_map ()
     # This updates our position on the world map.  It will update
     # world_map and return the current
     room = world_map.get_current_room ()
 
     # first, we have to handle the special 'go' verb
     if args[0] == 'go':
+        if len (args) == 1:
+            return "Where do you want to go?"
         args = args[1:]
 
     # then, we update our position

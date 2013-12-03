@@ -25,7 +25,7 @@ import signal
 import world
 import data
 from verbs import Verbs
-from state import State
+import state
 
 PROMPT = '> '
 
@@ -37,8 +37,9 @@ world_map.load_connections (data.map_connections)
 world_map.set_current_room ('stockton-home')
 
 ## Set up the world state
-state = State ()
-state.set_balance (100)
+world_state = state.State ()
+world_state.set_funds (100)
+world_state.set_world_map (world_map)
 
 ## set up the parsing engine
 verbs = Verbs ()
@@ -81,20 +82,20 @@ def evaluate_command (command):
     # Evaluate a command.  This is the only place that will print out
     # any output to the user.  It expects a set of tokens 
 
-    message = verbs.eval (world_map, command)
+    message = verbs.eval (command, world_state)
     if message:
         print message
 
-    status = world_map.get_game_status ()
+    status = world_state.get_game_status ()
 
-    if status == world.STATUS_ALIVE:
+    if status == state.STATUS_ALIVE:
         return True
-    if status == world.STATUS_DEAD:
+    if status == state.STATUS_DEAD:
         return False
-    if status == world.STATUS_SAVE:
+    if status == state.STATUS_SAVE:
         print 'Saving not implemented yet.  Sorry.'
         return True
-    if status == world.STATUS_QUIT:
+    if status == state.STATUS_QUIT:
         print 'Goodbye!'
         return False
 

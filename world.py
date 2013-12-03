@@ -23,13 +23,6 @@
 
 from room import Room
 
-# Status
-# Fixme: move to status
-STATUS_ALIVE = 1
-STATUS_DEAD = 2
-STATUS_SAVE = 3
-STATUS_QUIT = 4
-
 # Moving Directions
 DIR_NORTH = 1
 DIR_NORTHEAST = 2
@@ -48,8 +41,6 @@ class World:
     def __init__ (self):
         self.current_room = None
         self.rooms = {}
-        self.inventory = []
-        self.status = STATUS_ALIVE
 
     def load_rooms (self, rooms):
         for row in rooms:
@@ -78,14 +69,7 @@ class World:
     def get_room (self, id):
         return self.rooms[id]
 
-    def keep_playing (self):
-        return (self.status == STATUS_ALIVE)
 
-    def set_game_status (self, status):
-        self.status = status
-
-    def get_game_status (self):
-        return self.status
 
 
 
