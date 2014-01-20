@@ -11,6 +11,14 @@ map_rooms = [
       'Home', 
       """A white house with a red roof.  There is a wooden door and some small windows here.  It has a small garden and field and a white fence around it.  It is very pretty.""",),
 
+    ( 'stockton-kitchen',
+      'Kitchen', 
+      """You are in your kitchen.  It smells like elderberry juice and gingerbread."""),
+
+    ( 'stockton-bedroom',
+      'bedroom',
+      """You are in your bedroom.  It has two beds,a table, a lamp  and a closet."""),
+
     ( 'stockton-jacks-house',
       'Jack\'s house', 
       """It's a brown house with a wooden roof.  It has two floors and has a chicken coop, a well and a field."""),
@@ -42,7 +50,6 @@ map_rooms = [
     ),
 ]
 
-
 map_connections = [
     ('stockton-home', 
      ('n', 'stockton-market'),
@@ -50,7 +57,18 @@ map_connections = [
      ('s', 'stockton-glorys-house'),
      ('e', 'stockton-church'),
      ('ne', 'stockton-school'),
+     ('in', 'stockton-kitchen'),
     ),
+
+    ('stockton-kitchen',
+     ( 'out', 'stockton-home'),
+     ('in', 'stockton-bedroom'),
+    ),
+
+    ('stockton-bedroom',
+     ( 'out', 'stockton-kitchen'),
+    ), 
+
 
     ('stockton-jacks-house',
      ('n', 'stockton-glorys-house'),
@@ -89,8 +107,7 @@ map_connections = [
     ),
 
     ('stockton-dock',
-     ('n', 'stockton-church')
+     ('n', 'stockton-church'),
     ),
+    
 ]
-
-
