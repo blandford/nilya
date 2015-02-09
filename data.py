@@ -25,7 +25,15 @@ map_rooms = [
 
     ( 'stockton-glorys-house',
       'Glory\'s house',
-      """It's a brick house with a yellow roof and a wooden door.  There are some windows, a fence, and a field."""),
+      """It's a brick house with a yellow roof and a wooden door. There are some windows and a field. It also has a garden."""),
+
+    ( 'stockton-glorys-garden',
+      'Glory\'s house',
+      """It's a garden with lots of flowers.  There is a white picket fence around it."""),
+
+    ( 'stockton-big-tree',
+      'big tree',
+      """Its a big tree."""),
 
     ('stockton-school',
      'The Stockton School',
@@ -46,8 +54,20 @@ map_rooms = [
 
     ( 'stockton-dock',
       'The Docks',
-      """It's a wooden dock with a boathouse.  There are two motorboats and one sailboat here."""
+      """It's a wooden dock with a boathouse.  There are two motorboats and one sailboat here. Would you like to buy a boat?"""
     ),
+
+    ( 'stockton-crystal-lake',
+      'Crystal Lake',
+      """Its a beautiful lake thats clear and calm as crystal."""
+    ),
+
+    ( 'stockton-crystal-river',
+      'Crystal River',
+      """Its a river conected to Crystal Lake."""
+    ),
+
+
 ]
 
 map_connections = [
@@ -58,56 +78,75 @@ map_connections = [
      ('e', 'stockton-church'),
      ('ne', 'stockton-school'),
      ('in', 'stockton-kitchen'),
-    ),
+ ),
 
     ('stockton-kitchen',
      ( 'out', 'stockton-home'),
      ('in', 'stockton-bedroom'),
-    ),
-
+ ),
+    
     ('stockton-bedroom',
      ( 'out', 'stockton-kitchen'),
-    ), 
+ ), 
 
 
     ('stockton-jacks-house',
      ('n', 'stockton-glorys-house'),
-    ),
+ ),
 
     ('stockton-glorys-house', 
      ('n', 'stockton-home'),
      ('s', 'stockton-jacks-house'),
      ('nw', 'stockton-general-store'),
-    ),
-
+     ('w', 'stockton-glorys-garden'),
+ ),
+    
     ('stockton-market', 
      ('s', 'stockton-home'),
      ('e', 'stockton-school'),
      ('se', 'stockton-church'),
      ('sw', 'stockton-general-store'),
-    ),
-
+ ),
+    
     ('stockton-general-store', 
      ('e', 'stockton-home'),
      ('ne', 'stockton-market'),
      ('sw', 'stockton-glorys-house'),
-    ),
-
+ ),
+    
     ('stockton-school',
      ('w', 'stockton-market'),
      ('s', 'stockton-church'),
      ('sw', 'stockton-home'),
-    ),
-
+ ),
+    
     ('stockton-church',
      ('w', 'stockton-home'),
      ('n', 'stockton-school'),
      ('s', 'stockton-dock'),
      ('nw', 'stockton-market'),
-    ),
+ ),
 
     ('stockton-dock',
      ('n', 'stockton-church'),
-    ),
+     ('s', 'stockton-crystal-lake'),
+ ),
     
+    ('stockton-glorys-garden',
+    ('up', 'stockton-big-tree'),
+ ),
+
+    ('stockton-big-tree',
+     ('down', 'stockton-glorys-garden'),
+ ),
+    
+    ('stockton-crystal-lake',
+     ('n', 'stockton-dock'),
+     ('se','stockton-crystal-river'),
+ ),
+
+    ('stockton-crystal-river',
+    ('nw', 'stockton-crystal-lake'),
+),
+
 ]
