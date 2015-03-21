@@ -6,6 +6,17 @@ Welcome to The Nilya Quest!
 
 You are on a quest to find the nilya, and do amazing things with it.
 """
+
+items = [
+    ( 'stockton-key',
+      'key',
+      """A small silver key.  It only fits in one door"""),
+    ( 'golden-marble',
+      'marble',
+      """A small, golden marble. It's your good luck charm.""")
+      ]
+
+
 map_rooms = [
     ( 'stockton-home',
       'Home', 
@@ -89,7 +100,6 @@ map_connections = [
      ( 'out', 'stockton-kitchen'),
  ), 
 
-
     ('stockton-jacks-house',
      ('n', 'stockton-glorys-house'),
  ),
@@ -147,6 +157,5 @@ map_connections = [
 
     ('stockton-crystal-river',
     ('nw', 'stockton-crystal-lake'),
-),
-
+ ),
 ]

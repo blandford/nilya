@@ -3,6 +3,7 @@
 #
 # nilya.py - A text adventure game
 # Copyright © 2013 Jonathan Blandford
+# Copyright © 2015 Eleanor Blandford
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
