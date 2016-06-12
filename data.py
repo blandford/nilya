@@ -6,17 +6,49 @@ Welcome to The Nilya Quest!
 
 You are on a quest to find the nilya, and do amazing things with it.
 """
-
+##
+## Items
+##
+## List of tuples of the form [('id', 'short name', 'longer description'),...]
+##
 items = [
     ( 'stockton-key',
       'key',
       """A small silver key.  It only fits in one door"""),
     ( 'golden-marble',
       'marble',
-      """A small, golden marble. It's your good luck charm.""")
-      ]
+      """A small, golden marble. It's your good luck charm."""),
+    ( 'silver-needle',
+      'needle',
+      """A silver needle. It cuts through any fabric like a knife through butter."""),
+    ( 'silk-thread',
+      'thread',
+      """A spool of purple silk thread."""),
+    ( 'charm bracelet',
+      'bracelet',
+      """A tarnished, silver, charm bracelet. It has a moon charm on it."""),
+    ( 'elderberry-candy',
+      'candy'
+      """Its a small elderberry candy. Your mothers speacialty."""),
+    ( 'small-matchbox',
+      'matchbox',
+      """Its a box of matches."""),
+    ( 'spellbonder-wand',
+      'spellbonder',
+      """A wand made out of pure mooncrest. It has a silver moon on top."""),
+    ( 'magic-clay',
+      'clay',
+      """A very large lump of magic clay"""),
+    ( 'sewing scissors',
+      'scissors',
+      """Very sharp scissors""")
+]
 
-
+## 
+## Places
+## 
+## List ot tuples of the form [('id', 'short name', 'longer description'),..]
+##
 map_rooms = [
     ( 'stockton-home',
       'Home', 
@@ -77,7 +109,10 @@ map_rooms = [
       'Crystal River',
       """Its a river conected to Crystal Lake."""
     ),
-
+    
+    ( 'stockton-closet',
+      'Closet',
+      """Its a closet""")
 
 ]
 
@@ -89,73 +124,78 @@ map_connections = [
      ('e', 'stockton-church'),
      ('ne', 'stockton-school'),
      ('in', 'stockton-kitchen'),
- ),
+    ),
 
     ('stockton-kitchen',
      ( 'out', 'stockton-home'),
      ('in', 'stockton-bedroom'),
- ),
+    ),
     
     ('stockton-bedroom',
      ( 'out', 'stockton-kitchen'),
- ), 
-
+     ('in','closet'),
+    ),
+    
     ('stockton-jacks-house',
      ('n', 'stockton-glorys-house'),
- ),
+    ),
 
     ('stockton-glorys-house', 
      ('n', 'stockton-home'),
      ('s', 'stockton-jacks-house'),
      ('nw', 'stockton-general-store'),
      ('w', 'stockton-glorys-garden'),
- ),
+    ),
     
     ('stockton-market', 
      ('s', 'stockton-home'),
      ('e', 'stockton-school'),
      ('se', 'stockton-church'),
      ('sw', 'stockton-general-store'),
- ),
+    ),
     
     ('stockton-general-store', 
      ('e', 'stockton-home'),
      ('ne', 'stockton-market'),
      ('sw', 'stockton-glorys-house'),
- ),
+    ),
     
     ('stockton-school',
      ('w', 'stockton-market'),
      ('s', 'stockton-church'),
      ('sw', 'stockton-home'),
- ),
+    ),
     
     ('stockton-church',
      ('w', 'stockton-home'),
      ('n', 'stockton-school'),
      ('s', 'stockton-dock'),
      ('nw', 'stockton-market'),
- ),
+    ),
 
     ('stockton-dock',
      ('n', 'stockton-church'),
      ('s', 'stockton-crystal-lake'),
- ),
+    ),
     
     ('stockton-glorys-garden',
-    ('up', 'stockton-big-tree'),
- ),
+     ('up', 'stockton-big-tree'),
+    ),
 
     ('stockton-big-tree',
      ('down', 'stockton-glorys-garden'),
- ),
+    ),
     
     ('stockton-crystal-lake',
      ('n', 'stockton-dock'),
      ('se','stockton-crystal-river'),
- ),
+    ),
 
     ('stockton-crystal-river',
-    ('nw', 'stockton-crystal-lake'),
- ),
+     ('nw', 'stockton-crystal-lake'),
+    ),
+    
+    ('stockton-closet',
+     ('out','stockton-bedroom')
+    ),
 ]
